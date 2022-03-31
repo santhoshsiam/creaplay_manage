@@ -1,0 +1,22 @@
+.modal-header {
+    align-items: center;
+}
+.modal-header span{
+    font-size: 25px;
+    cursor: pointer;
+}
+.btn_1{
+    background-color: #000;
+    color: #fff;
+    border-radius: 50px;
+    padding: 10px 20px !important;
+}
+.btn_2{
+    background-color: #868e96;
+    color: #fff;
+    border-radius: 50px;
+    padding: 10px 25px !important;
+}
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}

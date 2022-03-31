@@ -1,0 +1,57 @@
+<div>
+
+  <div class="header">
+    <h3>Manage users</h3>
+    <span (click)="openAdd()">
+      Add user
+    </span>
+  </div>
+  <div class="tables">
+    <table datatable [dtOptions]="dtOptions"  class="row-border hover">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Role</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile number</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let tabledetail of tabledetails ; let i=index" >
+          <td>{{i+1}}</td>
+          <td>{{tabledetail.role}}</td>
+          <td>{{tabledetail.name}}</td>
+          <td>{{tabledetail.email}}</td>
+          <td>{{tabledetail.mobile_no}}</td>
+          <td>
+            <span>
+              <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="openedit()"></i>
+            </span>
+            <span (click)="deleteSession(tabledetail._id)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+
+          </td>
+        </tr>
+
+      </tbody>
+      <tbody *ngIf="tabledetails?.length == 0">
+        <tr>
+          <td colspan="3" class="no-data-available">No data!</td>
+        </tr>
+      </tbody>
+    
+    </table>
+
+
+  </div>
+
+
+
+
+
+</div>
+
+

@@ -1,0 +1,42 @@
+<div [@routerTransition] class="login-page">
+    <div class="row justify-content-md-center ">
+        <div class="col-md-4">
+            <h1>creaplay</h1>
+            <form role="form" [formGroup]="profileForm" >
+                <div class="form-content" >
+                    <div class="form-group">
+                        <label for="email"> Email Address</label>
+                        <input
+                            [placeholder]="'Email'"
+                            class="form-control"
+                            type="email" 
+                            formControlName="email" 
+
+                        />
+                        <div *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
+                            <div *ngIf="getControl.email.errors?.required">*Email is required.</div>
+                            <div *ngIf="getControl.email.errors?.email">*Email is roung.</div>
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            [placeholder]="'Password'"
+                            class="form-control "
+                            type="password"
+                            formControlName="password" 
+                        />
+                        <div *ngIf="getControl.password.touched && getControl.password.invalid" class="text-danger">
+                            <div *ngIf="getControl.password.errors?.required">*password is required.</div>
+                        </div> 
+                    </div>
+                </div>
+                <a (click)="submit()" class="btn rounded-btn">{{
+                    'Log in' 
+                }}</a>
+                
+            </form>
+        </div>
+    </div>
+</div>

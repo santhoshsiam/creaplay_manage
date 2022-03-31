@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/bootstrap';
+@import 'spinner';
+@import 'utils';
+@import 'rtl';
+@import 'responsive';
+@import '~ngx-toastr/toastr';
+
+
+@media print {
+    .breadcrumb {
+        display: none !important;
+    }
+}
+.modal-backdrop {
+    position: fixed;
+    top: -11px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1034 !important;
+    background-color: #000;
+}
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: none;
+    border-radius: 17px;
+    outline: none;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 18px !important;
+}
+.modal-header[_ngcontent-rxb-c109] {
+    align-items: center;
+    padding: 18px !important;
+}
+.form-check {
+    position: relative;
+    display: block;
+    padding-right: 1.25rem;
+    padding-left: 0;
+}
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding-left: 5px;
+}

@@ -1,0 +1,33 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 0;
+    align-items: center;
+   
+}
+.header span{
+    background-color: black;
+    color:#fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+table span{
+    margin: 8px;
+}
+    
+.tables i{
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+table, td, th {
+    border: 1px solid #B2BABB !important;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }

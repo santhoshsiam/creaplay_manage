@@ -1,0 +1,21 @@
+
+:host {
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff ;
+        border-bottom: 1px solid #B2BABB;
+        color: black;
+    }
+        .nav-item > a {
+            color:black;
+
+        }
+    .dropdown-menu-right{
+        position: absolute;
+        min-width: 7rem !important;
+        left: -25px !important;
+    }
+
+ 
+}
