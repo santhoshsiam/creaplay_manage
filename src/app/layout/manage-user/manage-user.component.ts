@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataTableDirective } from 'angular-datatables';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { DataservicesService } from '../../shared/dataservices.service';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -13,25 +14,21 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 })
 export class ManageUserComponent implements OnInit {
 
- 
-  
   tabledetails: any;
-
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  // datatableElement: DataTableDirective;
-
-
-
+  
   constructor(private modalService: NgbModal,
-    private api: DataservicesService) { }
+    private api: DataservicesService,
+    private toastr: ToastrService,
+    private http: HttpClient) {}
 
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 2
     };
     this.listSessionData();
   }
@@ -41,36 +38,36 @@ export class ManageUserComponent implements OnInit {
       .subscribe((sub: any) => {
         console.log(sub)
         this.tabledetails = sub.data.user_list;
-        // this.dtTrigger.next();
+        //this.dtTrigger.next();
       })
   }
 
   openAdd() {
-     this.modalService.open(AddUserComponent, { size: 'md' });
-   
+    this.modalService.open(AddUserComponent, { size: 'md' })
+  }
 
+  openedit(tabledetail) {
+    let modelref = this.modalService.open(EditUserComponent);
+    modelref.componentInstance.tabledetail = tabledetail
   }
-  // openEdit(tabledetail) {
-  //   let modelref =this.modalService.open(EditUserComponent);
-  //   modelref.componentInstance.tabledetail=tabledetail
-  // }
-  openedit() {
-    this.modalService.open(EditUserComponent, { size: 'md' });
+
+  deleteSession(tabledetail) {  
+    var con = window.confirm(`Are you sure to delete  ${tabledetail.name}`)
+    if (con == true) {
+      this.api.delete_api(tabledetail._id)
+        .subscribe((sub: any) => {
+          if (sub.status == 1) {
+            this.listSessionData();
+            this.toastr.success("Successfully")
+          } else {
+            this.toastr.error("not Successfully")
+          }
+        }, error => {
+
+        })
+    }
   }
- 
-  deleteSession(tabledetail) {
-    var con =window.confirm(`Are you sure to delete  ${tabledetail.name}`)
-      if (con == true ) {
-        this.api.delete_api(tabledetail)
-          .subscribe((sub: any) => {
-            if (sub.status == 1) {
-              this. listSessionData();
-            } else {
-              
-            }
-          })
-      }
-  }
+
 
 
 }

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { DataservicesService } from './shared/dataservices.service';
 import { InterceptorService } from './shared/interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import { InterceptorService } from './shared/interceptor.service';
         ReactiveFormsModule,
         FormsModule,
         DataTablesModule,
-        
+        ToastrModule.forRoot(),
         
     ],
     declarations: [AppComponent],

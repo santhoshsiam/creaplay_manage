@@ -10,64 +10,64 @@
   <div class="modal-body">
     <form [formGroup]="addForm">
 
-      <div class="form-group d-flex">
-        <div class="form-check">
-          <input type="radio" formControlName="role" id="Admin" name="role" value="Admin">
-          <label for="Admin">Admin</label>
+      <div class="form-group">
+        <input type="radio" id="admin" formControlName="role" value="admin"
+          class="mr-1 ">
+        <label for="admin" class="mr-3">Admin</label>
 
-        </div>
-        <div class="form-check">
-          <input type="radio" formControlName="role" id="Instructor" name="role" value="Instructor">
-          <label for="Instructor">Instructor</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" formControlName="role"  id="coordinator" name="role" value="coordinator">
-          <label for="coordinator">Co-ordinator</label>
-        </div>
+        <input type="radio" id="instructor" formControlName="role" value="instructor"
+          class="mr-1 ">
+        <label  for="instructor" class="mr-3">Instructor</label>
+
+        <input type="radio" id="coordinator" formControlName="role" value="coordinator"
+          class="mr-1">
+        <label for="coordinator">Co-ordinator</label>
 
       </div>
-
-
+ 
       <div class="form-group">
         <input formControlName="name" placeholder="Name" type="text" name="name" id="name" class="form-control"
           placeholder="enter your name">
-        <!-- <div *ngIf="getControl.name.touched && getControl.name.invalid" class="text-danger">
+        <div *ngIf="getControl.name.touched && getControl.name.invalid" class="text-danger">
           <div *ngIf="getControl.name.errors?.required">*Username is required.</div>
           <div *ngIf="getControl.name.errors?.pattern">*Enter only character.</div>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <textarea placeholder="Add short bio" formControlName="textarea" rows="4" cols="50" class="form-control">
             </textarea>
-        <!-- <div *ngIf="getControl.textarea.touched && getControl.textarea.invalid" class="text-danger">
-          <div *ngIf="getControl.textarea.errors?.required">*Username is required.</div>
-        </div> -->
+        <div *ngIf="getControl.textarea.touched && getControl.textarea.invalid" class="text-danger">
+          <div *ngIf="getControl.textarea.errors?.required">*textarea is required.</div>
+        </div>
       </div>
 
       <div class="form-group">
         <input formControlName="email" type="text" name="email" placeholder="Email id" id="email" class="form-control">
-        <!-- <div *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
+        <div *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
           <div *ngIf="getControl.email.errors?.required">*Email is required.</div>
           <div *ngIf="getControl.email.errors?.email">*Email is roung.</div>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <input formControlName="number" type="text" placeholder="Phone number" name="number" id="number"
           class="form-control">
-        <!-- <div *ngIf="getControl.mobile_no.touched && getControl.mobile_no.invalid" class="text-danger">
-          <div *ngIf="getControl.mobile_no.errors?.required">*mobile_no is required.</div>
-          <div *ngIf="getControl.mobile_no.errors?.pattern">*enter only number.</div>
-        </div> -->
+        <div *ngIf="getControl.number.touched && getControl.number.invalid" class="text-danger">
+          <div *ngIf="getControl.number.errors?.required">*mobile_no is required.</div>
+          <div *ngIf="getControl.number.errors?.pattern">*enter only number.</div>
+        </div>
       </div>
 
       <div class="form-group ">
-        <input type="file" formControlName="upload_image" accept="image/*">
+        <input type="file" formControlName="upload_image" name="upload_image" id="upload_image" accept="image/*">
+        <div *ngIf="getControl.upload_image.touched && getControl.upload_image.invalid" class="text-danger">
+          <div *ngIf="getControl.upload_image.errors?.required">*upload_image is required.</div>
+        </div>
       </div>
 
       <div class="d-flex mt-4">
-        <button type="button" class="btn btn_1 py-2 px-4 mr-3"   (click)="addFormsubmit()">
+        <button type="button" class="btn btn_1 py-2 px-4 mr-3" (click)="addFormsubmit()">
           <span class="ng-star-inserted">Add</span>
         </button>
         <button type="button" class="btn btn_2" (click)="activeModal.close('Close click')">
