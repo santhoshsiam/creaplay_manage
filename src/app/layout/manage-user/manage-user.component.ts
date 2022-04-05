@@ -51,13 +51,25 @@ export class ManageUserComponent implements OnInit {
       }
     },(error) => {
       console.log(error);
+      if (error == true) {
+        this.rerender()
+      }
     })
   }
   
   openedit(tabledetail) {
-    let modelref = this.modalService.open(EditUserComponent);
+    let modelref = this.modalService.open(EditUserComponent); modelref.result.then((data) => {
+      console.log(data);
+      if (data == true) {
+        this.rerender()
+      }
+    },(error) => {
+      console.log(error);
+      if (error == true) {
+        this.rerender()
+      }
+    })   
     modelref.componentInstance.tabledetail = tabledetail
-     
   }
 
   deleteSession(tabledetail) {
@@ -75,11 +87,9 @@ export class ManageUserComponent implements OnInit {
       })
     }
   }
- 
   // ngAfterViewInit(): void {
   //   this.dtTrigger.next(true);
   // }
-
   // ngOnDestroy(): void {
   //   this.dtTrigger.unsubscribe();
   // }

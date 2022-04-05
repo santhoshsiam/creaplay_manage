@@ -12,7 +12,7 @@ import { DataservicesService } from '../../../shared/dataservices.service';
 })
 export class EditUserComponent implements OnInit {
 
-  @Input() tabledetail: any;
+  @Input() tabledetail;
 
   editeForm: FormGroup | any;
 
@@ -52,9 +52,13 @@ export class EditUserComponent implements OnInit {
       upload_image: this.editeForm.value.upload_image
     }
     this.api.edit_api(obj).subscribe((sub: any) => {
-      window.location.reload();
-      this.activeModal.dismiss();
-      this.toastr.success(" Successfully");
+      console.log(sub);
+      if (sub.status == 1) {
+        this.activeModal.dismiss(true);
+        this.toastr.success(sub.message);
+      } else {
+        this.toastr.error(sub.message);
+      }
     }, error => {
 
     });

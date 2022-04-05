@@ -49,8 +49,8 @@ export class AddUserComponent implements OnInit {
     this.api.add_api(obj).subscribe((sub: any) => {
       console.log(sub);
       if (sub.status == 1) {
-        window.location.reload();
-        this.activeModal.dismiss();
+        // window.location.reload();
+        this.activeModal.dismiss(true);
         this.toastr.success(sub.message);
       } else {
         this.toastr.error(sub.message);
