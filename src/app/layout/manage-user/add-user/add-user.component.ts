@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { post } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +18,8 @@ export class AddUserComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal,
     private fb: FormBuilder,
     private api: DataservicesService,
-    private toastr : ToastrService) { }
+    private toastr: ToastrService,
+    private router : Router) { }
 
   ngOnInit(): void {
 
@@ -43,17 +45,19 @@ export class AddUserComponent implements OnInit {
       email: this.addForm.value.email,
       mobile_no: this.addForm.value.number,
       upload_image: this.addForm.value.upload_image,
-    } 
-    this.api.add_api(obj).subscribe((sub:any) =>{
+    }
+    this.api.add_api(obj).subscribe((sub: any) => {
       console.log(sub);
-      this.activeModal.dismiss();
-      this.toastr.success(" Successfully");
-    },error=>{
-      this.toastr.error(" not Successfully");
+      if (sub.status == 1) {
+        window.location.reload();
+        this.activeModal.dismiss();
+        this.toastr.success(sub.message);
+      } else {
+        this.toastr.error(sub.message);
+      }
+    }, error => {
+
     })
-   
-    // this.addForm.reset()
-   
   }
 
 

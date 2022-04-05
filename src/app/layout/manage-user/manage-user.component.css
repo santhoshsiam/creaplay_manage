@@ -31,3 +31,7 @@ table, td, th {
     width: 100%;
     border-collapse: collapse;
   }
+
+  td span{
+      cursor: pointer;
+  }

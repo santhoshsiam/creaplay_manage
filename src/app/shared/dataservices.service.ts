@@ -26,6 +26,10 @@ export class DataservicesService {
       return this.http.post(' https://underdev.creaplay.in/add_or_update_admin_user ',data)
     }
 
+    get_edit(data){
+      return this.http.get('https://underdev.creaplay.in/view_admin_user/'+data)
+    }
+
     delete_api(data){
       return this.http.get('https://underdev.creaplay.in/delete_admin_user/'+data)
     }
